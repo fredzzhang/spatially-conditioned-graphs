@@ -45,7 +45,7 @@ class InteractionHead(nn.Module):
                 human_idx,
                 num_classes,
                 box_nms_thresh=0.5,
-                box_score_thresh=0.2,
+                box_score_thresh=0.05,
                 max_human=10,
                 max_object=10,
                 distributed=False
@@ -103,7 +103,8 @@ class InteractionHead(nn.Module):
         return_scores = []
         return_labels = []
         return_idx = []
-
+        # Remove scores predicted for the background class
+        box_scores = box_scores[:, :-1]
         counter = 0
         for boxes in box_coords:
             n = boxes.shape[0]
@@ -113,9 +114,8 @@ class InteractionHead(nn.Module):
             counter += n
             # Remove background predictions and low scoring examples
             active_idx = torch.nonzero(
-                torch.logical_and(labels != 80,
                 scores >= self.box_score_thresh
-            )).squeeze(1)
+            ).squeeze(1)
             # Class-wise non-maximum suppression
             keep_idx = box_ops.batched_nms(
                 boxes[active_idx],
@@ -148,6 +148,8 @@ class InteractionHead(nn.Module):
     def compute_object_classification_loss(self, boxes, logits, targets):
         labels = []
         for b, t in zip(boxes, targets):
+            if len(b) == 0:
+                continue
             gt_boxes = torch.cat([
                 t['boxes_h'],
                 t['boxes_o']
@@ -230,8 +232,6 @@ class InteractionHead(nn.Module):
         ):
             # Keep valid classes
             x, y = torch.nonzero(p).unbind(1)
-            if len(x) == 0:
-                continue
 
             result_dict = dict(
                 boxes_h=b_h, boxes_o=b_o,
@@ -314,8 +314,6 @@ class InteractionHead(nn.Module):
             logits, box_pair_prior, boxes_h, boxes_o,
             object_class, box_pair_labels
         )
-        if len(results) == 0:
-            return None
 
         if self.training:
             loss_dict = dict(
