@@ -111,17 +111,26 @@ def main(rank, args):
         print_interval=args.print_interval,
         cache_dir=args.cache_dir
     )
-    net_params = [
-        p for p in engine.fetch_state_key('net').parameters()
-        if p.requires_grad
-    ]
+
+    param_group_1 = []
+    param_group_2 = []
+    for k, v in engine.fetch_state_key('net').named_parameters():
+        if v.requires_grad:
+            if 'interaction_head.box_head' in k or 'interaction_head.cls_head' in k:
+                param_group_1.append(v)
+            else:
+                param_group_2.append(v)
+
     optim = torch.optim.AdamW(
-        net_params,
+        [{'params': param_group_1, 'lr': args.learning_rate * args.lr_decay},
+        {'params': param_group_2}],
         lr=args.learning_rate,
         weight_decay=args.weight_decay
     )
-    lr_scheduler = torch.optim.lr_scheduler.MultiStepLR(
-        optim, milestones=args.milestones, gamma=args.lr_decay
+    lambda1 = lambda epoch: args.learning_rate * args.lr_decay
+    lambda2 = lambda epoch: args.learning_rate if epoch < args.milestones[0] else args.learning_rate * args.lr_decay
+    lr_scheduler = torch.optim.lr_scheduler.LambdaLR(
+        optim, lr_lambda=[lambda1, lambda2]
     )
     engine.update_state_key(optimizer=optim, lr_scheduler=lr_scheduler)
     engine.update_state_key(epoch=epoch, iteration=iteration)
