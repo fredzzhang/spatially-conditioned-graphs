@@ -201,7 +201,7 @@ class InteractionHead(nn.Module):
         """
         num_boxes = [len(p) for p in prior]
 
-        weights = torch.sigmoid(logits_s).squeeze(1)
+        weights = torch.sigmoid(logits_s)
         scores = torch.sigmoid(logits_p)
         weights = weights.split(num_boxes)
         scores = scores.split(num_boxes)
@@ -218,8 +218,8 @@ class InteractionHead(nn.Module):
             result_dict = dict(
                 boxes_h=b_h, boxes_o=b_o,
                 index=x, prediction=y,
-                scores=s[x, y] * p[x, y] * w[x].detach(),
-                object=o, prior=p, weights=w
+                scores=s[x, y] * p[x, y] * w[x, o[x]].detach(),
+                object=o, prior=p[x, y], weights=w[:, o]
             )
             # If binary labels are provided
             if l is not None:

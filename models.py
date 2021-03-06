@@ -139,7 +139,7 @@ class SpatioAttentiveGraph(GenericHOINetwork):
         )
 
         box_pair_predictor = nn.Linear(representation_size * 2, num_classes)
-        box_pair_suppressor = nn.Linear(representation_size * 2, 1)
+        box_pair_suppressor = nn.Linear(representation_size * 2, 80)
 
         interaction_head = InteractionHead(
             box_roi_pool=box_roi_pool,
