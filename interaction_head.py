@@ -163,7 +163,7 @@ class InteractionHead(nn.Module):
         weights = []; labels = []
         for result in results:
             weights.append(result['weights'])
-            labels.append(result['binary_labels'])
+            labels.append(result['binary_labels'][result['index']])
 
         weights = torch.cat(weights)
         labels = torch.cat(labels)
