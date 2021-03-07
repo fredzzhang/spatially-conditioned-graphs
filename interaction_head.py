@@ -163,7 +163,7 @@ class InteractionHead(nn.Module):
         weights = []; labels = []
         for result in results:
             weights.append(result['weights'])
-            labels.append(result['binary_labels'][result['index']])
+            labels.append(result['binary_labels'])
 
         weights = torch.cat(weights)
         labels = torch.cat(labels)
@@ -219,7 +219,7 @@ class InteractionHead(nn.Module):
                 boxes_h=b_h, boxes_o=b_o,
                 index=x, prediction=y,
                 scores=s[x, y] * p[:, x, y].prod(dim=0) * w[x, o[x]].detach(),
-                object=o, prior=p[:, x, y], weights=w[x, o[x]]
+                object=o, prior=p[:, x, y], weights=w
             )
             # If binary labels are provided
             if l is not None:
