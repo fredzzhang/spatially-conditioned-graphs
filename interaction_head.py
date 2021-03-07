@@ -219,7 +219,8 @@ class InteractionHead(nn.Module):
                 boxes_h=b_h, boxes_o=b_o,
                 index=x, prediction=y,
                 scores=s[x, y] * p[:, x, y].prod(dim=0) * w[x, o[x]].detach(),
-                object=o, prior=p[:, x, y], weights=w
+                object=o, prior=p[:, x, y],
+                weights=w[torch.arange(len(w), device=w.device), o]
             )
             # If binary labels are provided
             if l is not None:
