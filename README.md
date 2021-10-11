@@ -1,5 +1,7 @@
 # Spatially Conditioned Graphs
-Official PyTorch implementation for our paper [Spatially Conditioned Graphs for Detecting Human-Object Interactions](https://arxiv.org/pdf/2012.06060.pdf)
+Official PyTorch implementation for ICCV 2021 paper Spatially Conditioned Graphs for Detecting Human-Object Interactions.
+
+\[[__paper__](https://openaccess.thecvf.com/content/ICCV2021/papers/Zhang_Spatially_Conditioned_Graphs_for_Detecting_Human-Object_Interactions_ICCV_2021_paper.pdf)\] \[[__supp__](https://openaccess.thecvf.com/content/ICCV2021/supplemental/Zhang_Spatially_Conditioned_Graphs_ICCV_2021_supplemental.pdf)\] \[[__video__](https://www.youtube.com/watch?v=gkBWi_rWedU)\]
 
 <img src="./assets/scg.png" alt="graph" height="200" align="left"/>
 <img src="./assets/mbf.png" alt="multibranch_fusion" height="200" align="center"/>
@@ -9,11 +11,13 @@ Official PyTorch implementation for our paper [Spatially Conditioned Graphs for 
 If you find this repository useful for your research, please kindly cite our paper:
 
 ```bibtex
-@article{zhang2020,
-	author = {Frederic Z. Zhang and Dylan Campbell and Stephen Gould},
-	title = {Spatially Conditioned Graphs for Detecting Human-Object Interactions},
-	journal = {arXiv preprint arXiv:2012.06060},
-	year = {2020}
+@InProceedings{zhang_2021_ICCV,
+    author    = {Zhang, Frederic Z. and Campbell, Dylan and Gould, Stephen},
+    title     = {Spatially Conditioned Graphs for Detecting Human-Object Interactions},
+    booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
+    month     = {October},
+    year      = {2021},
+    pages     = {13319-13327}
 }
 ```
 
