@@ -1,5 +1,5 @@
 # Spatially Conditioned Graphs
-Official PyTorch implementation for ICCV 2021 paper Spatially Conditioned Graphs for Detecting Human-Object Interactions.
+Official PyTorch implementation for ICCV 2021 paper _Spatially Conditioned Graphs for Detecting Human-Object Interactions_.
  \[[__paper__](https://openaccess.thecvf.com/content/ICCV2021/papers/Zhang_Spatially_Conditioned_Graphs_for_Detecting_Human-Object_Interactions_ICCV_2021_paper.pdf)\] \[[__supp__](https://openaccess.thecvf.com/content/ICCV2021/supplemental/Zhang_Spatially_Conditioned_Graphs_ICCV_2021_supplemental.pdf)\] \[[__preprint__](https://arxiv.org/pdf/2012.06060.pdf)\] \[[__video__](https://www.youtube.com/watch?v=gkBWi_rWedU)\]
 
 <img src="./assets/scg.png" alt="graph" height="200" align="left"/>
