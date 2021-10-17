@@ -10,7 +10,7 @@ Official PyTorch implementation for ICCV 2021 paper _Spatially Conditioned Graph
 If you find this repository useful for your research, please kindly cite our paper:
 
 ```bibtex
-@InProceedings{zhang_2021_ICCV,
+@InProceedings{zhang:iccv2021,
     author    = {Zhang, Frederic Z. and Campbell, Dylan and Gould, Stephen},
     title     = {Spatially Conditioned Graphs for Detecting Human-Object Interactions},
     booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
@@ -71,17 +71,16 @@ cd /path/to/spatially-conditioned-graphs/hicodet/detections
 python preprocessing.py --partition train2015
 python preprocessing.py --partition test2015
 ```
-3. Generate ground truth detections (optional)
-```bash
-cd /path/to/spatially-conditioned-graphs/hicodet/detections
-python generate_gt_detections.py --partition test2015 
-```
-4. Download fine-tuned detections (optional)
+3. Download fine-tuned detections
 ```bash
 cd /path/to/spatially-conditioned-graphs/download
 bash download_finetuned_detections.sh
 ```
-To attempt fine-tuning yourself, refer to the [instructions](https://github.com/fredzzhang/hicodet/tree/main/detections#fine-tune-the-detector-on-hico-det) in the [HICO-DET repository](https://github.com/fredzzhang/hicodet). The checkpoint of our fine-tuned detector can be found [here](https://drive.google.com/file/d/11lS2BQ_In-22Q-SRTRjRQaSLg9nSim9h/view?usp=sharing).
+4. Generate ground truth detections (optional)
+```bash
+cd /path/to/spatially-conditioned-graphs/hicodet/detections
+python generate_gt_detections.py --partition test2015 
+```
 
 ### V-COCO
 1. Download the `train2014` and `val2014` partitions of the [COCO dataset](https://cocodataset.org/#download)
@@ -122,7 +121,7 @@ CUDA_VISIBLE_DEVICES=0 python cache.py --model-path checkpoints/scg_1e-4_b32h16e
 ```
 By default, 80 `.mat` files, one for each object class, will be cached in a directory named `matlab`. Use the `--cache-dir` argument to change the cache directory. To change sources of detections, refer to the use of `--detection-dir` in the previous section.
 
-As a reference, the performance of the provided model is shown in the table below
+As a reference, the performance of the provided model is shown in the table below.
 
 |Detections|Default Setting|Known Object Setting|
 |:-|:-:|:-:|
