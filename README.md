@@ -126,8 +126,11 @@ As a reference, the performance of the provided model is shown in the table belo
 |Detections|Default Setting|Known Object Setting|
 |:-|:-:|:-:|
 |Pre-trained on MS COCO|(`21.85`, `18.11`, `22.97`)|(`25.53`, `21.79`, `26.64`)|
-|Fine-tuned on HICO-DET ([DRG](https://drive.google.com/file/d/18_6K2P6s9vMBWOvcNNQqUj2wfLhbvpLo/view))|(`31.33`, `24.72`, `33.31`)|(`34.37`, `27.18`, `36.52`)|
+|*~~Fine-tuned on HICO-DET ([DRG](https://drive.google.com/file/d/18_6K2P6s9vMBWOvcNNQqUj2wfLhbvpLo/view))~~|~~(`31.33`, `24.72`, `33.31`)~~|~~(`34.37`, `27.18`, `36.52`)~~|
+|Fine-tuned DETR-R101 ([here](https://github.com/fredzzhang/hicodet))|(`29.26`, `24.61`, `30.65`)|(`32.87`, `27.89`, `34.35`)|
 |Ground truth detections|(`51.53`, `41.02`, `54.67`)|(`51.75`, `41.40`, `54.84`)|
+
+*The detections provided by the DRG repo were found to be not reproducible. 
 
 ### V-COCO
 
