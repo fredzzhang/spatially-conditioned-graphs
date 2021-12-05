@@ -1,22 +1,27 @@
 # Spatially Conditioned Graphs
-Official PyTorch implementation for ICCV 2021 paper _Spatially Conditioned Graphs for Detecting Human-Object Interactions_.
- \[[__paper__](https://openaccess.thecvf.com/content/ICCV2021/papers/Zhang_Spatially_Conditioned_Graphs_for_Detecting_Human-Object_Interactions_ICCV_2021_paper.pdf)\] \[[__supp__](https://openaccess.thecvf.com/content/ICCV2021/supplemental/Zhang_Spatially_Conditioned_Graphs_ICCV_2021_supplemental.pdf)\] \[[__preprint__](https://arxiv.org/pdf/2012.06060.pdf)\] \[[__video__](https://www.youtube.com/watch?v=gkBWi_rWedU)\]
+
+__NEW! Check out our most recent work on transformer-based HOI detection [here](https://github.com/fredzzhang/upt).__
 
 <img src="./assets/scg.png" alt="graph" height="200" align="left"/>
 <img src="./assets/mbf.png" alt="multibranch_fusion" height="200" align="center"/>
+
+This repository contains the official PyTorch implementation for ICCV 2021 paper
+> Frederic Z. Zhang, Dylan Campbell and Stephen Gould. _Spatially Conditioned Graphs for Detecting Human-Object Interactions_. In Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV), pages 13319-13327, October 2021.
+
+ \[[__paper__](https://openaccess.thecvf.com/content/ICCV2021/papers/Zhang_Spatially_Conditioned_Graphs_for_Detecting_Human-Object_Interactions_ICCV_2021_paper.pdf)\] \[[__supp__](https://openaccess.thecvf.com/content/ICCV2021/supplemental/Zhang_Spatially_Conditioned_Graphs_ICCV_2021_supplemental.pdf)\] \[[__preprint__](https://arxiv.org/pdf/2012.06060.pdf)\] \[[__video__](https://www.youtube.com/watch?v=gkBWi_rWedU)\]
 
 ## Citation
 
 If you find this repository useful for your research, please kindly cite our paper:
 
 ```bibtex
-@InProceedings{zhang:iccv2021,
-    author    = {Zhang, Frederic Z. and Campbell, Dylan and Gould, Stephen},
-    title     = {Spatially Conditioned Graphs for Detecting Human-Object Interactions},
-    booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
-    month     = {October},
-    year      = {2021},
-    pages     = {13319-13327}
+@inproceedings{zhang2021scg,
+  author    = {Frederic Z. Zhang, Dylan Campbell and Stephen Gould},
+  title     = {Spatially Conditioned Graphs for Detecting Human–Object Interactions},
+  booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
+  month     = {October},
+  year      = {2021},
+  pages     = {13319-13327}
 }
 ```
 
@@ -89,7 +94,7 @@ python generate_gt_detections.py --partition test2015
     cd /path/to/spatially-conditioned-graphs/vcoco
     bash download.sh
     ```
-    2. If you have previsouly downloaded the dataset, simply create a soft link. Note that 
+    2. If you have previously downloaded the dataset, simply create a soft link. Note that 
     ```bash
     cd /path/to/spatially-conditioned-graphs/vcoco
     ln -s /path/to/coco ./mscoco2014
