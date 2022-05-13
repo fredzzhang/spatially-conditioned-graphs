@@ -135,7 +135,7 @@ As a reference, the performance of the provided model is shown in the table belo
 |Fine-tuned DETR-R101 ([here](https://github.com/fredzzhang/hicodet))|(`29.26`, `24.61`, `30.65`)|(`32.87`, `27.89`, `34.35`)|
 |Ground truth detections|(`51.53`, `41.02`, `54.67`)|(`51.75`, `41.40`, `54.84`)|
 
-*The detections provided by the DRG repo were found to be not reproducible. 
+*The detections provided by the DRG repo were produced by a Cascaded R-CNN with ResNeXt-152 backbone, which is not directly comparable to the commonly used object detectors in the literature. 
 
 ### V-COCO
 
